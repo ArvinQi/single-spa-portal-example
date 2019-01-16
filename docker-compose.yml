@@ -1,0 +1,45 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:1-alpine
+    volumes:
+     - ./nginx/3000.conf:/etc/nginx/conf.d/3000.conf
+    ports:
+     - "9001:3000"
+    depends_on:
+     - portal
+     - app1react
+     - app2angular
+     - app3angular1
+     - app4vue
+     - app5angular
+
+  portal:
+    build: ./portal
+    ports:
+     - "3000:80"
+
+  app1react:
+    build: ./app1React
+    ports:
+     - "3002:80"
+
+  app2angular:
+    build: ./app2Angular
+    ports:
+     - "3003:80"
+
+  app3angular1:
+    build: ./app3Angular1
+    ports:
+     - "3004:80"
+
+  app4vue:
+    build: ./app4Vue
+    ports:
+     - "3005:80"
+
+  app5angular:
+    build: ./app5Angular
+    ports:
+     - "3006:80"
